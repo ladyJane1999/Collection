@@ -15,8 +15,6 @@ namespace Collection.Queue
 		public QueueEnumerator1(Queue1<T> queue)
 		{
 			this.queue = queue;
-			//В самом начале перечислитель не смотрит ни на какой элемент
-			//Чтобы посмотреть на первый элемент, его нужно сначала переместить.
 			this.currentItem = null;
 		}
 
@@ -27,14 +25,10 @@ namespace Collection.Queue
 
 		public bool MoveNext()
 		{
-			//Если мы еще никуда не смотрим - посмотреть на голову очереди
 			if (currentItem == null)
 				currentItem = queue.Head;
-			//В противном случае, посмотреть на следующий элемент
 			else
 				currentItem = currentItem.Next;
-			//Вернуть true, если нам удалось перейти на следующий элемент, 
-			//или false, если не удалось и из foreach нужно выйти
 			return currentItem != null;
 		}
 
