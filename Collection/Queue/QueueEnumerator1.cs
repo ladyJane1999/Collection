@@ -11,11 +11,12 @@ namespace Collection.Queue
 	{
 		Queue1<T> queue;
 		QueueItem1<T> currentItem;
-
+                int count;
 		public QueueEnumerator1(Queue1<T> queue)
 		{
 			this.queue = queue;
 			this.currentItem = null;
+			count=queue.Count;
 		}
 
 		public T? Current
@@ -25,10 +26,15 @@ namespace Collection.Queue
 
 		public bool MoveNext()
 		{
+		       if (count != queue.Count)
+                {
+			throw new InvalidOperationException("count < queue.Count");
+                }
 			if (currentItem == null)
 				currentItem = queue.Head;
 			else
 				currentItem = currentItem.Next;
+				count=queue.Count;
 			return currentItem != null;
 		}
 
