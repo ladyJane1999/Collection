@@ -8,7 +8,6 @@ namespace ConsoleApp1.FullJoin
 {
     internal static class MyExtensions
     {
-
         internal static IEnumerable<TResult> FullJoin<TA, TB, TKey, TResult>(
             this IEnumerable<TA> a,
             IEnumerable<TB> b,
